@@ -52,3 +52,42 @@
                         </div>
 
                     </div>
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Повторите пароль</label>
+
+                        <div class="col-md-6">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card">
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class=" col-md-4 col-form-label text-md-right">Название инспекции</label>
+                        <input type="text" name="name_inspecting" class="form-control col-md-6"  placeholder="">
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class=" col-md-4 col-form-label text-md-right">Адрес</label>
+                        <input type="text" name="address" class="form-control col-md-6"  placeholder="">
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class=" col-md-4 col-form-label text-md-right">Ответственный сотрудник</label>
+                        <input type="text" name="responsible" class="form-control col-md-6"  placeholder="ФИО">
+                    </div>
+                    <div class="form-group row" >
+                        <label for="exampleInputEmail3" class=" col-md-4 col-form-label text-md-right">Телефон</label>
+                        <input type="text" name="phone" class="form-control col-md-6"  placeholder="">
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="form-row text-center " style="display: flex; justify-content: center;">
+                <button type="submit" class="btn btn-primary col-md-4" >Зарегистрировать инспектора</button>
+            </div>
+        </form>
+
+    </div>
+
+
+@endsection
