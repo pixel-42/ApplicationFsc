@@ -67,3 +67,53 @@ use Illuminate\Support;
 
 
         });
+
+
+
+
+        Route::group(['prefix' => 'client'], function () {
+
+            //Список Инпекторов
+            Route::get('/list-inspection', 'Crm\InspectingController@showInspecting')->name('list-inspection');
+            //Список заявок
+            Route::get('/list-application', 'Crm\ApplicationController@showAllRequest')->name('list-application');
+            //Страница Инспекции
+            Route::get('/{dev}', 'Crm\InspectingController@index' )->name('name-inspection');
+
+            Route::get('/data-add', 'Crm\DocumentController@add')->name('add-data-organisation');
+
+            //Отправка заявки
+            Route::post('/application-submit/{id}', 'Crm\ApplicationController@submits')->name('departure-application');
+            Route::get('/request/{request_id}', 'Crm\ApplicationController@showRequest')->name('show-request');
+
+            //Демонстрация документа
+
+
+//            Route::post('/document', 'Crm\Documents\DocumentController@store')->name('departure-document');
+        });
+
+
+
+
+Route::get('/request/show-document/{id}', 'Crm\ApplicationController@showDocument')->name('show-document');
+
+Route::post('/submit/form-file-upload', 'Crm\Documents\DocumentController@store');
+
+Route::get('/logout', 'UserController@logout');
+
+//НЕ НАШЕЛ
+Route::post('/submit', 'Crm\OrganisationController@submits')->name('organisation-form');
+//НЕ НАШЕЛ
+Route::post('/', 'DocumentController@upload')->name('organisation-form-file');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
