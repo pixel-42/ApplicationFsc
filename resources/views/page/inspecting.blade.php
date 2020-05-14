@@ -48,3 +48,46 @@
                         <label for="exampleInputName1">Перечень кварталов</label>
                         <input type="text" name="list_blocks" class="form-control" id="exampleInputName1" placeholder="INN">
                     </div>
+                    
+                    <div class="form-group">
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}" >
+                        <label for="exampleInputEmail3">Документы</label>
+                        <input type="file" name="application_document" class="form-control" id="exampleInputEmail3" required multiple>
+                    </div>
+                </div>
+            </div>
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-primary mr-2" >Отправить заявку</button>
+                </div>
+
+    </form>
+        </div>
+
+
+
+{{--        <div class="form-group">--}}
+{{--            <label for="exampleInputEmail3">Документ</label>--}}
+{{--            <input type="file" name="application_document" class="form-control" id="exampleInputEmail3" placeholder="Name organisation">--}}
+{{--        </div>--}}
+
+
+
+
+
+{{--    <form class="forms-sample" action="{{ route('departure-document')}}" method="post" enctype="multipart/form-data">--}}
+{{--        {{ csrf_field() }}--}}
+
+{{--        <div class="form-group">--}}
+{{--            <label for="exampleInputEmail3">Документ</label>--}}
+{{--            <input type="file" name="application_document" class="form-control" id="exampleInputEmail3" placeholder="Name organisation">--}}
+{{--        </div>--}}
+{{--        <button type="submit" class="btn btn-primary mr-2" >Отправить документты</button>--}}
+{{--    </form>--}}
+
+
+
+
+
+
+
+@endsection
