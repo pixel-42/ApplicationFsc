@@ -47,3 +47,33 @@
 {{--                </div>--}}
 
 {{--            </div>--}}
+
+
+{{--            <div class="form-group">--}}
+{{--                <label for="exampleInputCity1">City</label>--}}
+{{--                <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">--}}
+{{--            </div>--}}
+{{--            <div class="form-group">--}}
+{{--                <label for="exampleTextarea1">Textarea</label>--}}
+{{--                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>--}}
+{{--            </div>--}}
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn btn-light">Cancel</button>
+        </form>
+{{--        <form class="forms-sample" action="{{ route('organisation-form-file') }}" method="post" enctype="multipart/form-data">--}}
+{{--            {{csrf_field()}}--}}
+
+{{--            <div class="from-group">--}}
+{{--                <input type="file" name="image">--}}
+{{--            </div>--}}
+
+{{--            <buttton class="btn btn-default" type="submit">Загрузкаа</buttton>--}}
+
+{{--        </form>--}}
+
+        @isset($path)
+            <img class="img-fluid" src="{{ asset('/storage/' . $path) }}" >
+        @endisset
+    </div>
+
+@endsection
