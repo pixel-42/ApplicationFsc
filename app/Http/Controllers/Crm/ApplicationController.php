@@ -1,0 +1,49 @@
+<?php
+
+
+namespace App\Http\Controllers\Crm;
+
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ApplicationRequest;
+use App\Models\Application;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Inspecting;
+use App\Models\Document;
+use http\Url;
+use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Storage;
+use Storage;
+
+
+class ApplicationController extends Controller {
+
+    public function submits(ApplicationRequest $req, $id){
+
+        $appication = new Application();
+        $appication->sender_id = Auth::id();
+        $appication->recipient_id = $id;
+        $appication->name_organisation = $req->input('name_organisation');
+        $appication->inn = $req->input('inn');
+        $appication->address = $req->input('address');
+        $appication->contact_person = $req->input('contact_person');
+        $appication->region = $req->input('region');
+        $appication->forestry = $req->input('forestry');
+        $appication->forest_district = $req->input('forest_district');
+        $appication->tract = $req->input('tract');
+        $appication->list_blocks = $req->input('list_blocks');
+        $appication->status = 'In the treatment';
+
+        $appication->save();
+
+        $pathр = $req->file('application_document')->store('documents', 'public');
+
+        $originalName = $req->file('application_document')->getClientOriginalName();
+
+        
+
+    }
+
+
+}
