@@ -41,8 +41,27 @@ class ApplicationController extends Controller {
 
         $originalName = $req->file('application_document')->getClientOriginalName();
 
+        //Добавление документа в хранилище и добавление записи с сылкой на документ, в БД
+        $id_applicat = Application::orderBy('id', 'desc')->first()->id;
+        $doc = new Document();
+        $doc->application_id = $id_applicat;
+        $doc->filename = $originalName;
+        $doc->url = $pathр;
+
+        $doc->save();
+
+        return redirect()->route('list-application');
+
         
 
+    }
+
+    public function showAllRequestForAdmin(){
+        $applOpganisation =  DB::table('applications')->get();
+
+        return view('index.listApplication', [
+            'allRequest' => $applOpganisation
+        ]);
     }
 
 
