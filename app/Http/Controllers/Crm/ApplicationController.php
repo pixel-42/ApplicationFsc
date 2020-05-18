@@ -64,5 +64,13 @@ class ApplicationController extends Controller {
         ]);
     }
 
+    public function showAllRequest(){
+        $applOpganisation =  DB::table('applications')->where('recipient_id', Auth::id())->orWhere('sender_id', Auth::id())->get();
+
+        return view('index.listApplication', [
+            'allRequest' => $applOpganisation
+            ]);
+    }
+
 
 }
