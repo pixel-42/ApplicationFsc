@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Storage;
 use Storage;
 
-
 class ApplicationController extends Controller {
 
     public function submits(ApplicationRequest $req, $id){
@@ -52,8 +51,6 @@ class ApplicationController extends Controller {
 
         return redirect()->route('list-application');
 
-        
-
     }
 
     public function showAllRequestForAdmin(){
@@ -64,5 +61,38 @@ class ApplicationController extends Controller {
         ]);
     }
 
+    public function showAllRequest(){
+        $applOpganisation =  DB::table('applications')->where('recipient_id', Auth::id())->orWhere('sender_id', Auth::id())->get();
 
+        return view('index.listApplication', [
+            'allRequest' => $applOpganisation
+            ]);
+    }
+
+    public function showRequest($request_id){
+//        $contents = Storage::get('public/documents/FgIqmDTq8RkQpSuJukQXhrcnmqmRRTruLkYYs3bM.pdf');
+//        dd($contents);
+
+        $dataRequest =  DB::table('applications')->where('id', $request_id)->first();
+        $dataRequestDocument = DB::table('documents')->where('application_id', $request_id)->get();
+        return view('page.request', [
+            'dataRequest' => $dataRequest,
+            'dataRequestDocument' => $dataRequestDocument
+        ]);
+    }
+
+    public function showDocument($id){
+
+        $dataDocument = DB::table('documents')->where('id', $id)->value('url');;
+        return view('page.showDocument', ['path'=> $dataDocument]);
+//        return view('index.showDocument' , ['path'=> $url]);
+    }
+
+    public function addComment( Request $req_add_comment, $id){
+        $appication_add_comment = Application::find($id);
+        $appication_add_comment->comment = $req_add_comment->input('add-comment');
+        $appication_add_comment->save();
+
+        return redirect()->route('show-request', ['request_id'=> $id]);
+    }
 }
