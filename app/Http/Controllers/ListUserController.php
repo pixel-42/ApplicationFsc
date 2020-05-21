@@ -23,7 +23,7 @@ class ListUserController extends Controller
      */
     public function index()
     {
-        $users = ['Egor','Matvey','Katy'];
+        $users = ['','',''];
 
         $title = "Список пользователей !!!";
 
